@@ -36,7 +36,7 @@ export type Config = {
 export class ConfigManager {
     public static config: Config = {
         datastoreCache: false,
-        timeout: 50000,
+        timeout: 100000,
         port: '3000',
         width: 1000,
         height: 1000,
@@ -44,9 +44,7 @@ export class ConfigManager {
 
     static async getConfiguration(): Promise<Config> {
         // Load config.json if it exists.
-        if (fse.pathExistsSync(CONFIG_PATH)) {
-            ConfigManager.config = Object.assign(ConfigManager.config, await fse.readJson(CONFIG_PATH));
-        }
+     
         return ConfigManager.config;
     }
 }
